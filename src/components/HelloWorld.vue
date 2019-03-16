@@ -73,12 +73,14 @@
       <el-footer>没有数据了</el-footer>
     </el-container>
     <el-container class="character-logger">
-      <h3>新增角色日志</h3>
-      <ul>
-        <li v-for="logger in loggers">
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>新增角色日志</span>
+        </div>
+        <div v-for="logger in loggers" class="text item">
           {{ logger }}
-        </li>
-      </ul>
+        </div>
+      </el-card>
     </el-container>
   </el-container>
 </template>
@@ -129,7 +131,7 @@ export default {
               let time = new Date().toLocaleString();     //获取当前时间
               for (let c in characters) {
                 this.characters.push(characters[c]);
-                let logger = time + "【" + characters[c].name + "】 " + characters[c];
+                let logger = time + "【" + characters[c].name + "】 " + "上链成功";
                 this.loggers.push(logger);
               }
             }
@@ -161,6 +163,18 @@ export default {
     text-align: center;
     line-height: 160px;
     margin: 0 auto;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .item {
+    margin-bottom: 18px;
+  }
+
+  .box-card {
+    width: 100%;
   }
 
   .character-logger {
